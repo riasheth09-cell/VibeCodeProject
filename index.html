@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Web Dev Trivia Game</title>
+    <title>Intro to Web Development</title>
 
     <!-- Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
@@ -31,42 +31,90 @@
         margin-top: 0;
       }
 
-      .question-card {
-        margin-bottom: 25px;
-        text-align: left;
-        background-color: #f8fafc;
-        padding: 15px 20px;
-        border-radius: 8px;
-        border: 1px solid #e2e8f0;
-      }
-
-      .question-title {
+      p {
         font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 12px;
-        color: #1a5276;
+        line-height: 1.6;
+        color: #4a5568;
+        text-align: left;
       }
 
-      .option-label {
-        display: block;
-        padding: 8px 12px;
-        margin: 6px 0;
+      /* Responsive Image Styling */
+      .responsive-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 15px;
+        margin-bottom: 25px;
+      }
+
+      /* Quiz Section Styling */
+      .quiz-card {
+        background-color: #f8fafc;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #e2e8f0;
+        text-align: left;
+      }
+
+      .progress-text {
+        font-size: 14px;
+        font-weight: bold;
+        color: #2980b9;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .question-text {
+        font-size: 19px;
+        font-weight: bold;
+        color: #1a5276;
+        margin-bottom: 16px;
+      }
+
+      .options-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .option-btn {
         background-color: #ffffff;
         border: 1px solid #cbd5e1;
-        border-radius: 6px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 16px;
+        color: #2c3e50;
+        text-align: left;
         cursor: pointer;
-        transition: background-color 0.2s ease;
+        transition: all 0.2s ease;
       }
 
-      .option-label:hover {
-        background-color: #eef2f5;
+      .option-btn:hover {
+        background-color: #1a5276;
+        color: #ffffff;
+        border-color: #1a5276;
       }
 
-      .option-label input {
-        margin-right: 10px;
+      /* Result Screen */
+      #result-screen {
+        display: none;
+        text-align: center;
       }
 
-      .btn {
+      .score-display {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 20px 0 10px 0;
+        color: #2c3e50;
+      }
+
+      .feedback-msg {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 25px;
+      }
+
+      .restart-btn {
         background-color: #1a5276;
         color: #ffffff;
         font-size: 16px;
@@ -75,61 +123,145 @@
         border: none;
         border-radius: 6px;
         cursor: pointer;
-        margin-top: 10px;
         transition: background-color 0.2s ease;
       }
 
-      .btn:hover {
+      .restart-btn:hover {
         background-color: #2980b9;
-      }
-
-      #result-screen {
-        display: none;
-      }
-
-      .score-display {
-        font-size: 28px;
-        font-weight: bold;
-        margin: 20px 0;
-        color: #2c3e50;
-      }
-
-      .feedback-msg {
-        font-size: 20px;
-        margin-bottom: 20px;
-        font-weight: bold;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Web Dev Trivia Challenge</h1>
+      <!-- ORIGINAL TEXT & CONTENT -->
+      <h1>Intro to Web Development</h1>
+      <p>Welcome to our class webpage! In this course, we are learning the fundamentals of building websites using HTML, CSS, and hosting them on GitHub Pages.</p>
+      
+      <!-- ORIGINAL PHOTO -->
+      <img src="aipic.avif" alt="AI image" class="responsive-img">
 
-      <!-- QUIZ FORM -->
-      <form id="quiz-form">
-        <!-- Question 1 -->
-        <div class="question-card">
-          <div class="question-title">1. What does HTML stand for?</div>
-          <label class="option-label">
-            <input type="radio" name="q1" value="A"> High Tech Modern Language
-          </label>
-          <label class="option-label">
-            <input type="radio" name="q1" value="B"> Hyper Text Markup Language
-          </label>
-          <label class="option-label">
-            <input type="radio" name="q1" value="C"> Hyperlink Text Mode Language
-          </label>
-        </div>
+      <!-- ONE-QUESTION-AT-A-TIME ANIMAL TRIVIA -->
+      <div id="quiz-card" class="quiz-card">
+        <div id="progress-text" class="progress-text">Question 1 of 3</div>
+        <div id="question-text" class="question-text">Loading question...</div>
+        <div id="options-container" class="options-container"></div>
+      </div>
 
-        <!-- Question 2 -->
-        <div class="question-card">
-          <div class="question-title">2. Which CSS property changes text color?</div>
-          <label class="option-label">
-            <input type="radio" name="q2" value="A"> font-style
-          </label>
-          <label class="option-label">
-            <input type="radio" name="q2" value="B"> text-color
-          </label>
-          <label class="option-label">
-            <input type="radio" name="q2" value="C"> color
-          </label>
+      <!-- RESULT SCREEN -->
+      <div id="result-screen" class="quiz-card">
+        <h2>Quiz Completed!</h2>
+        <div class="score-display" id="score-text"></div>
+        <div class="feedback-msg" id="feedback-text"></div>
+        <button class="restart-btn" onclick="restartQuiz()">Try Again</button>
+      </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+      // Animal Trivia Questions
+      const questions = [
+        {
+          question: "1. What is the largest animal currently living on Earth?",
+          options: [
+            { text: "African Elephant", isCorrect: false },
+            { text: "Blue Whale", isCorrect: true },
+            { text: "Colossal Squid", isCorrect: false }
+          ]
+        },
+        {
+          question: "2. How many hearts does an octopus have?",
+          options: [
+            { text: "1 Heart", isCorrect: false },
+            { text: "2 Hearts", isCorrect: false },
+            { text: "3 Hearts", isCorrect: true }
+          ]
+        },
+        {
+          question: "3. Which of these land animals is the fastest over short distances?",
+          options: [
+            { text: "Cheetah", isCorrect: true },
+            { text: "Pronghorn", isCorrect: false },
+            { text: "Lion", isCorrect: false }
+          ]
+        }
+      ];
+
+      let currentQuestionIndex = 0;
+      let score = 0;
+
+      const quizCard = document.getElementById('quiz-card');
+      const progressText = document.getElementById('progress-text');
+      const questionText = document.getElementById('question-text');
+      const optionsContainer = document.getElementById('options-container');
+      const resultScreen = document.getElementById('result-screen');
+      const scoreText = document.getElementById('score-text');
+      const feedbackText = document.getElementById('feedback-text');
+
+      function loadQuestion() {
+        const currentQ = questions[currentQuestionIndex];
+        
+        progressText.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+        questionText.textContent = currentQ.question;
+        optionsContainer.innerHTML = '';
+
+        currentQ.options.forEach(option => {
+          const btn = document.createElement('button');
+          btn.className = 'option-btn';
+          btn.textContent = option.text;
+          btn.onclick = () => handleAnswer(option.isCorrect);
+          optionsContainer.appendChild(btn);
+        });
+      }
+
+      function handleAnswer(isCorrect) {
+        if (isCorrect) {
+          score++;
+        }
+
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex < questions.length) {
+          loadQuestion();
+        } else {
+          showResults();
+        }
+      }
+
+      function showResults() {
+        quizCard.style.display = 'none';
+        resultScreen.style.display = 'block';
+
+        scoreText.textContent = `Your Score: ${score} / 3`;
+
+        if (score === 3) {
+          feedbackText.textContent = '🎉 Perfect Score! You are an Animal Expert!';
+          feedbackText.style.color = '#27ae60';
+
+          // Confetti explosion
+          confetti({
+            particleCount: 120,
+            spread: 70,
+            origin: { y: 0.6 }
+          });
+        } else if (score === 2) {
+          feedbackText.textContent = 'Great job! Almost got them all!';
+          feedbackText.style.color = '#2980b9';
+        } else {
+          feedbackText.textContent = 'Good try! Give it another shot.';
+          feedbackText.style.color = '#e74c3c';
+        }
+      }
+
+      function restartQuiz() {
+        score = 0;
+        currentQuestionIndex = 0;
+        resultScreen.style.display = 'none';
+        quizCard.style.display = 'block';
+        loadQuestion();
+      }
+
+      // Initialize quiz on page load
+      loadQuestion();
+    </script>
+  </body>
+</html>
