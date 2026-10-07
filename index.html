@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Animal Trivia Game</title>
+    <title>Web Dev Trivia Game</title>
 
     <!-- Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
@@ -35,4 +35,101 @@
         margin-bottom: 25px;
         text-align: left;
         background-color: #f8fafc;
-        padding: 15px 20px
+        padding: 15px 20px;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+      }
+
+      .question-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 12px;
+        color: #1a5276;
+      }
+
+      .option-label {
+        display: block;
+        padding: 8px 12px;
+        margin: 6px 0;
+        background-color: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      .option-label:hover {
+        background-color: #eef2f5;
+      }
+
+      .option-label input {
+        margin-right: 10px;
+      }
+
+      .btn {
+        background-color: #1a5276;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.2s ease;
+      }
+
+      .btn:hover {
+        background-color: #2980b9;
+      }
+
+      #result-screen {
+        display: none;
+      }
+
+      .score-display {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 20px 0;
+        color: #2c3e50;
+      }
+
+      .feedback-msg {
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Web Dev Trivia Challenge</h1>
+
+      <!-- QUIZ FORM -->
+      <form id="quiz-form">
+        <!-- Question 1 -->
+        <div class="question-card">
+          <div class="question-title">1. What does HTML stand for?</div>
+          <label class="option-label">
+            <input type="radio" name="q1" value="A"> High Tech Modern Language
+          </label>
+          <label class="option-label">
+            <input type="radio" name="q1" value="B"> Hyper Text Markup Language
+          </label>
+          <label class="option-label">
+            <input type="radio" name="q1" value="C"> Hyperlink Text Mode Language
+          </label>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-card">
+          <div class="question-title">2. Which CSS property changes text color?</div>
+          <label class="option-label">
+            <input type="radio" name="q2" value="A"> font-style
+          </label>
+          <label class="option-label">
+            <input type="radio" name="q2" value="B"> text-color
+          </label>
+          <label class="option-label">
+            <input type="radio" name="q2" value="C"> color
+          </label>
