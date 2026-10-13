@@ -4,132 +4,11 @@
     <meta charset="UTF-8">
     <title>Intro to Web Development</title>
 
+    <!-- Link to external CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
     <!-- Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
-
-    <style>
-      body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #eef2f5;
-        color: #2c3e50;
-        margin: 0;
-        padding: 40px 20px;
-      }
-
-      .container {
-        max-width: 600px;
-        margin: 0 auto;
-        background-color: #ffffff;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        text-align: center;
-      }
-
-      h1 {
-        color: #1a5276;
-        margin-top: 0;
-      }
-
-      p {
-        font-size: 18px;
-        line-height: 1.6;
-        color: #4a5568;
-        text-align: left;
-      }
-
-      /* Responsive Image Styling */
-      .responsive-img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin-top: 15px;
-        margin-bottom: 25px;
-      }
-
-      /* Quiz Section Styling */
-      .quiz-card {
-        background-color: #f8fafc;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid #e2e8f0;
-        text-align: left;
-      }
-
-      .progress-text {
-        font-size: 14px;
-        font-weight: bold;
-        color: #2980b9;
-        text-transform: uppercase;
-        margin-bottom: 8px;
-      }
-
-      .question-text {
-        font-size: 19px;
-        font-weight: bold;
-        color: #1a5276;
-        margin-bottom: 16px;
-      }
-
-      .options-container {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .option-btn {
-        background-color: #ffffff;
-        border: 1px solid #cbd5e1;
-        padding: 12px 16px;
-        border-radius: 8px;
-        font-size: 16px;
-        color: #2c3e50;
-        text-align: left;
-        cursor: pointer;
-        transition: all 0.2s ease;
-      }
-
-      .option-btn:hover {
-        background-color: #1a5276;
-        color: #ffffff;
-        border-color: #1a5276;
-      }
-
-      /* Result Screen */
-      #result-screen {
-        display: none;
-        text-align: center;
-      }
-
-      .score-display {
-        font-size: 28px;
-        font-weight: bold;
-        margin: 20px 0 10px 0;
-        color: #2c3e50;
-      }
-
-      .feedback-msg {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 25px;
-      }
-
-      .restart-btn {
-        background-color: #1a5276;
-        color: #ffffff;
-        font-size: 16px;
-        font-weight: bold;
-        padding: 12px 24px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-      }
-
-      .restart-btn:hover {
-        background-color: #2980b9;
-      }
-    </style>
   </head>
   <body>
     <div class="container">
@@ -147,11 +26,13 @@
         <div id="question-text" class="question-text">Loading question...</div> <!--loading the question -->
         <div id="options-container" class="options-container"></div>  <!--multiple choice -->
       </div>
-<ol>
-  <li> frozen blueberries</li>
-  <li> frozen mango</li>
-  <li> frozen grapes </li>
-</ol>
+
+      <ol>
+        <li> frozen blueberries</li>
+        <li> frozen mango</li>
+        <li> frozen grapes </li>
+      </ol>
+
       <!-- RESULT SCREEN -->
       <div id="result-screen" class="quiz-card"> <!-- showing the result screen-->
         <h2>Quiz Completed!</h2> <!--final screen-->
@@ -240,7 +121,7 @@
 
         if (score === 3) {
           feedbackText.textContent = '🎉 Perfect Score! You are an Animal Expert!';
-          feedbackText.style.color = '#27ae60';
+          feedbackText.style.color = '#4e7338'; /* Earthy warm green */
 
           // Confetti explosion
           confetti({
@@ -250,10 +131,10 @@
           });
         } else if (score === 2) {
           feedbackText.textContent = 'Great job! Almost got them all!';
-          feedbackText.style.color = '#2980b9';
+          feedbackText.style.color = '#8c6d53'; /* Tan brown */
         } else {
           feedbackText.textContent = 'Good try! Give it another shot.';
-          feedbackText.style.color = '#e74c3c';
+          feedbackText.style.color = '#a85b42'; /* Terracotta warm red */
         }
       }
 
