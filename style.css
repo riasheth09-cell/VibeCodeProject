@@ -1,308 +1,155 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Intro to Web Development</title>
+/* Base Styling - Times New Roman & Brown/Beige Palette */
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #f4efe6; /* Soft, warm beige background */
+  color: #4a3525; /* Deep espresso brown text */
+  margin: 0;
+  padding: 50px 20px;
+  line-height: 1.6;
+}
 
-    <!-- Confetti Library -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #ffffff; /* Clean white card */
+  padding: 40px 35px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(74, 53, 37, 0.07);
+  border: 1px solid #e6dccf; /* Subtle beige border */
+  text-align: center;
+}
 
-    <style>
-      /* Base Styling - Times New Roman & Brown/Beige Palette */
-      body {
-        font-family: 'Times New Roman', Times, serif;
-        background-color: #f4efe6; /* Soft, warm beige background */
-        color: #4a3525; /* Deep espresso brown text */
-        margin: 0;
-        padding: 50px 20px;
-        line-height: 1.6;
-      }
+h1 {
+  font-family: 'Times New Roman', Times, serif;
+  color: #3b281c; /* Dark coffee brown */
+  font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
 
-      .container {
-        max-width: 600px;
-        margin: 0 auto;
-        background-color: #ffffff; /* Clean white card */
-        padding: 40px 35px;
-        border-radius: 16px;
-        box-shadow: 0 8px 24px rgba(74, 53, 37, 0.07);
-        border: 1px solid #e6dccf; /* Subtle beige border */
-        text-align: center;
-      }
+h2 {
+  font-family: 'Times New Roman', Times, serif;
+  color: #5c4333; /* Medium warm brown */
+  font-size: 22px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
 
-      h1 {
-        font-family: 'Times New Roman', Times, serif;
-        color: #3b281c; /* Dark coffee brown */
-        font-size: 32px;
-        margin-top: 0;
-        margin-bottom: 16px;
-      }
+p {
+  font-size: 19px;
+  line-height: 1.7;
+  color: #523f33; /* Taupe / warm brown text */
+  text-align: left;
+  margin-bottom: 25px;
+}
 
-      h2 {
-        font-family: 'Times New Roman', Times, serif;
-        color: #5c4333; /* Medium warm brown */
-        font-size: 22px;
-        margin-top: 25px;
-        margin-bottom: 20px;
-      }
+/* Responsive Image Styling */
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 14px rgba(74, 53, 37, 0.08);
+}
 
-      p {
-        font-size: 19px;
-        line-height: 1.7;
-        color: #523f33; /* Taupe / warm brown text */
-        text-align: left;
-        margin-bottom: 25px;
-      }
+/* Quiz Section Styling - Soft Sand/Cream Card */
+.quiz-card {
+  background-color: #f9f5ef; /* Soft cream/beige box */
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e2d7c7;
+  text-align: left;
+  margin-bottom: 25px;
+}
 
-      /* Responsive Image Styling */
-      .responsive-img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 12px;
-        margin-top: 10px;
-        margin-bottom: 30px;
-        box-shadow: 0 4px 14px rgba(74, 53, 37, 0.08);
-      }
+.progress-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: #8c6d53; /* Warm tan label */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
 
-      /* Quiz Section Styling - Soft Sand/Cream Card */
-      .quiz-card {
-        background-color: #f9f5ef; /* Soft cream/beige box */
-        padding: 25px;
-        border-radius: 12px;
-        border: 1px solid #e2d7c7;
-        text-align: left;
-        margin-bottom: 25px;
-      }
+.question-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #3b281c;
+  margin-bottom: 18px;
+}
 
-      .progress-text {
-        font-size: 14px;
-        font-weight: bold;
-        color: #8c6d53; /* Warm tan label */
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 10px;
-      }
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-      .question-text {
-        font-size: 20px;
-        font-weight: bold;
-        color: #3b281c;
-        margin-bottom: 18px;
-      }
+.option-btn {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #ffffff;
+  border: 1.5px solid #d9ccbc;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 17px;
+  color: #4a3525;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
-      .options-container {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
+.option-btn:hover {
+  background-color: #6e5039; /* Rich brown on hover */
+  color: #ffffff;
+  border-color: #6e5039;
+}
 
-      .option-btn {
-        font-family: 'Times New Roman', Times, serif;
-        background-color: #ffffff;
-        border: 1.5px solid #d9ccbc;
-        padding: 14px 18px;
-        border-radius: 8px;
-        font-size: 17px;
-        color: #4a3525;
-        text-align: left;
-        cursor: pointer;
-        transition: all 0.2s ease;
-      }
+/* Ordered List Styling */
+ol {
+  text-align: left;
+  padding-left: 28px;
+  margin: 25px 0;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #523f33;
+}
 
-      .option-btn:hover {
-        background-color: #6e5039; /* Rich brown on hover */
-        color: #ffffff;
-        border-color: #6e5039;
-      }
+ol li {
+  margin-bottom: 6px;
+}
 
-      /* Ordered List Styling */
-      ol {
-        text-align: left;
-        padding-left: 28px;
-        margin: 25px 0;
-        font-size: 18px;
-        line-height: 1.8;
-        color: #523f33;
-      }
+/* Result Screen */
+#result-screen {
+  display: none;
+  text-align: center;
+}
 
-      ol li {
-        margin-bottom: 6px;
-      }
+.score-display {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  color: #3b281c;
+}
 
-      /* Result Screen */
-      #result-screen {
-        display: none;
-        text-align: center;
-      }
+.feedback-msg {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
 
-      .score-display {
-        font-size: 28px;
-        font-weight: bold;
-        margin: 20px 0 10px 0;
-        color: #3b281c;
-      }
+.restart-btn {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #6e5039;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
 
-      .feedback-msg {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 25px;
-      }
-
-      .restart-btn {
-        font-family: 'Times New Roman', Times, serif;
-        background-color: #6e5039;
-        color: #ffffff;
-        font-size: 17px;
-        font-weight: bold;
-        padding: 12px 28px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-      }
-
-      .restart-btn:hover {
-        background-color: #503826;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <!-- ORIGINAL TEXT & CONTENT -->
-      <h1>Intro to Web Development</h1>     <!-- Heading -->
-      <p>Welcome to our class webpage! In this course, we are learning the fundamentals of building websites using HTML, CSS, and hosting them on GitHub Pages.</p> <!-- Description -->
-      
-      <h2> I am glad that you are here!!</h2>
-      <!-- ORIGINAL PHOTO -->
-      <img src="AI.jpg" alt="AI image" class="responsive-img">    <!--inserting image -->
-
-      <!-- ONE-QUESTION-AT-A-TIME ANIMAL TRIVIA -->
-      <div id="quiz-card" class="quiz-card">     <!--visual location and image of the quiz feature -->
-        <div id="progress-text" class="progress-text">Question 1 of 3</div>   <!--text for the first question -->
-        <div id="question-text" class="question-text">Loading question...</div> <!--loading the question -->
-        <div id="options-container" class="options-container"></div>  <!--multiple choice -->
-      </div>
-
-      <ol>
-        <li> frozen blueberries</li>
-        <li> frozen mango</li>
-        <li> frozen grapes </li>
-      </ol>
-
-      <!-- RESULT SCREEN -->
-      <div id="result-screen" class="quiz-card"> <!-- showing the result screen-->
-        <h2>Quiz Completed!</h2> <!--final screen-->
-        <div class="score-display" id="score-text"></div>  <!-- showing the score out of three-->
-        <div class="feedback-msg" id="feedback-text"></div>  <!--showing the feedback -->
-        <button class="restart-btn" onclick="restartQuiz()">Try Again</button>  <!--text at the end saying "try again" -->
-      </div>
-    </div>
-
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-      // Animal Trivia Questions
-      const questions = [
-        {
-          question: "1. What is the largest animal currently living on Earth?",
-          options: [
-            { text: "African Elephant", isCorrect: false },
-            { text: "Blue Whale", isCorrect: true },
-            { text: "Colossal Squid", isCorrect: false }
-          ]
-        },
-        {
-          question: "2. How many hearts does an octopus have?",
-          options: [
-            { text: "1 Heart", isCorrect: false },
-            { text: "2 Hearts", isCorrect: false },
-            { text: "3 Hearts", isCorrect: true }
-          ]
-        },
-        {
-          question: "3. Which of these land animals is the fastest over short distances?",
-          options: [
-            { text: "Cheetah", isCorrect: true },
-            { text: "Pronghorn", isCorrect: false },
-            { text: "Lion", isCorrect: false }
-          ]
-        }
-      ];
-
-      let currentQuestionIndex = 0;
-      let score = 0;
-
-      const quizCard = document.getElementById('quiz-card');
-      const progressText = document.getElementById('progress-text');
-      const questionText = document.getElementById('question-text');
-      const optionsContainer = document.getElementById('options-container');
-      const resultScreen = document.getElementById('result-screen');
-      const scoreText = document.getElementById('score-text');
-      const feedbackText = document.getElementById('feedback-text');
-
-      function loadQuestion() {
-        const currentQ = questions[currentQuestionIndex];
-        
-        progressText.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
-        questionText.textContent = currentQ.question;
-        optionsContainer.innerHTML = '';
-
-        currentQ.options.forEach(option => {
-          const btn = document.createElement('button');
-          btn.className = 'option-btn';
-          btn.textContent = option.text;
-          btn.onclick = () => handleAnswer(option.isCorrect);
-          optionsContainer.appendChild(btn);
-        });
-      }
-
-      function handleAnswer(isCorrect) {
-        if (isCorrect) {
-          score++;
-        }
-
-        currentQuestionIndex++;
-
-        if (currentQuestionIndex < questions.length) {
-          loadQuestion();
-        } else {
-          showResults();
-        }
-      }
-
-      function showResults() {
-        quizCard.style.display = 'none';
-        resultScreen.style.display = 'block';
-
-        scoreText.textContent = `Your Score: ${score} / 3`;
-
-        if (score === 3) {
-          feedbackText.textContent = '🎉 Perfect Score! You are an Animal Expert!';
-          feedbackText.style.color = '#4e7338'; /* Earthy warm green */
-
-          // Confetti explosion
-          confetti({
-            particleCount: 120,
-            spread: 70,
-            origin: { y: 0.6 }
-          });
-        } else if (score === 2) {
-          feedbackText.textContent = 'Great job! Almost got them all!';
-          feedbackText.style.color = '#8c6d53'; /* Tan brown */
-        } else {
-          feedbackText.textContent = 'Good try! Give it another shot.';
-          feedbackText.style.color = '#a85b42'; /* Terracotta warm red */
-        }
-      }
-
-      function restartQuiz() {
-        score = 0;
-        currentQuestionIndex = 0;
-        resultScreen.style.display = 'none';
-        quizCard.style.display = 'block';
-        loadQuestion();
-      }
-
-      // Initialize quiz on page load
-      loadQuestion();
-    </script>
-  </body>
-</html>
+.restart-btn:hover {
+  background-color: #503826;
+}
